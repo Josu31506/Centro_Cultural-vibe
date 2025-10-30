@@ -40,7 +40,7 @@ const Home = () => {
 
   return (
     <div className="space-y-16">
-      <section className="rounded-3xl bg-gradient-to-br from-cocoa/95 via-caramel/85 to-coffee/90 px-8 py-12 text-cream shadow-soft">
+      <section className="rounded-3xl bg-gradient-to-br from-caramel/60 via-caramel/70 to-coffee/80 px-8 py-12 text-cream shadow-soft">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
           <div className="flex-1 space-y-4">
             <h1 className="text-3xl font-semibold leading-tight md:text-4xl">
@@ -64,15 +64,15 @@ const Home = () => {
               </Link>
             </div>
           </div>
-          <div className="relative mx-auto flex h-48 w-full max-w-sm items-center justify-center overflow-hidden rounded-3xl bg-cream/95 p-6 shadow-xl">
-            <div className="absolute -left-16 -top-16 h-40 w-40 rounded-full bg-caramel/35 blur-3xl" />
-            <div className="absolute -bottom-20 -right-10 h-48 w-48 rounded-full bg-cocoa/35 blur-3xl" />
+          <div className="relative mx-auto flex h-48 w-full max-w-sm items-center justify-center overflow-hidden rounded-3xl bg-cream/90 p-6 shadow-xl">
+            <div className="absolute -left-16 -top-16 h-40 w-40 rounded-full bg-caramel/40 blur-3xl" />
+            <div className="absolute -bottom-20 -right-10 h-48 w-48 rounded-full bg-coffee/40 blur-3xl" />
             <div className="relative text-center">
               <p className="text-xs uppercase tracking-widest text-caramel">Funciones destacadas</p>
               <ul className="mt-4 space-y-3 text-sm text-coffee">
-                <li className="rounded-full bg-sand px-4 py-2">• Gestiona tus inscripciones fácilmente</li>
-                <li className="rounded-full bg-sand px-4 py-2">• Accede a tu QR de ingreso al instante</li>
-                <li className="rounded-full bg-sand px-4 py-2">• Recibe recordatorios personalizados</li>
+                <li className="rounded-full bg-sand/80 px-4 py-2">• Gestiona tus inscripciones fácilmente</li>
+                <li className="rounded-full bg-sand/80 px-4 py-2">• Accede a tu QR de ingreso al instante</li>
+                <li className="rounded-full bg-sand/80 px-4 py-2">• Recibe recordatorios personalizados</li>
               </ul>
             </div>
           </div>

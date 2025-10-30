@@ -3,7 +3,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import useCountdown from '../hooks/useCountdown';
 import { useAuth } from '../hooks/useAuth';
 import { enrollInEvent, getEventById } from '../services/eventsService';
-import { extractErrorMessage } from '../utils/httpError';
 import type { Event } from '../types/event';
 
 const EventDetail = () => {
@@ -87,9 +86,7 @@ const EventDetail = () => {
         state: { eventId: event.id, eventTitle: event.title }
       });
     } catch (err) {
-      setEnrollError(
-        extractErrorMessage(err, 'No pudimos completar tu inscripción. Inténtalo nuevamente.')
-      );
+      setEnrollError('No pudimos completar tu inscripción. Inténtalo nuevamente.');
     } finally {
       setEnrolling(false);
     }
@@ -126,7 +123,7 @@ const EventDetail = () => {
         <Link to="/" className="inline-flex items-center gap-2 font-semibold hover:text-coffee">
           ← Volver
         </Link>
-        <span className="rounded-full bg-cocoa/10 px-4 py-1 uppercase tracking-wide">{event.type}</span>
+        <span className="rounded-full bg-caramel/15 px-4 py-1 uppercase tracking-wide">{event.type}</span>
       </div>
       <section className="rounded-3xl bg-cream p-10 shadow-soft">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
@@ -141,10 +138,7 @@ const EventDetail = () => {
             {event.tags.length > 0 && (
               <div className="flex flex-wrap gap-3">
                 {event.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-sand px-4 py-1 text-xs font-semibold uppercase tracking-wide text-caramel"
-                  >
+                  <span key={tag} className="rounded-full bg-sand px-4 py-1 text-xs font-semibold uppercase tracking-wide text-caramel">
                     #{tag}
                   </span>
                 ))}

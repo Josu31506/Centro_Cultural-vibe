@@ -5,18 +5,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        sand: '#F4DEB2',
-        cocoa: '#8B4513',
-        coffee: '#4A2C12',
-        caramel: '#D1884F',
-        cream: '#FFF5E5'
+        sand: '#F2F0CB',
+        cocoa: '#8C4C24',
+        coffee: '#5C2E0F',
+        caramel: '#C47A3D',
+        cream: '#F8F1DC'
       },
       fontFamily: {
-        display: ['"Poppins"', 'sans-serif'],
-        body: ['"Poppins"', 'sans-serif']
+        display: ['\"Poppins\"', 'sans-serif'],
+        body: ['\"Poppins\"', 'sans-serif']
       },
       boxShadow: {
-        soft: '0 12px 36px rgba(139, 69, 19, 0.18)'
+        soft: '0 10px 30px rgba(92, 46, 15, 0.15)'
       }
     }
   },

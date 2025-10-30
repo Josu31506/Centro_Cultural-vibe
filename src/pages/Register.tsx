@@ -2,7 +2,6 @@ import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import { useAuth } from '../hooks/useAuth';
-import { extractErrorMessage } from '../utils/httpError';
 
 const Register = () => {
   const { register: registerUser } = useAuth();
@@ -33,12 +32,7 @@ const Register = () => {
       setSuccess('¡Registro exitoso! Te estamos redirigiendo.');
       setTimeout(() => navigate('/', { replace: true }), 1200);
     } catch (err) {
-      setError(
-        extractErrorMessage(
-          err,
-          'No pudimos completar tu registro. Inténtalo nuevamente.'
-        )
-      );
+      setError('No pudimos completar tu registro. Inténtalo nuevamente.');
     } finally {
       setSubmitting(false);
     }

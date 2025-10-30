@@ -18,12 +18,12 @@ const EventCard = ({ event }: EventCardProps) => {
     <article className="flex h-full flex-col rounded-3xl bg-cream p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
       <div className="flex flex-1 flex-col gap-4">
         <div className="flex items-center justify-between text-xs font-semibold text-caramel">
-          <span className="rounded-full bg-cocoa/10 px-3 py-1 uppercase tracking-wide text-caramel">
+          <span className="rounded-full bg-caramel/15 px-3 py-1 uppercase tracking-wide text-caramel">
             {event.type}
           </span>
           <span>Comienza en: {countdown}</span>
         </div>
-        <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-cocoa/15">
+        <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-cocoa/20">
           <img src={imageSrc} alt={event.title} className="h-full w-full object-cover" />
         </div>
         <h3 className="text-lg font-semibold text-coffee">{event.title}</h3>

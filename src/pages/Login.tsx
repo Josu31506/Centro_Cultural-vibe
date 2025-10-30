@@ -2,7 +2,6 @@ import { FormEvent, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import { useAuth } from '../hooks/useAuth';
-import { extractErrorMessage } from '../utils/httpError';
 
 const Login = () => {
   const { login } = useAuth();
@@ -23,12 +22,7 @@ const Login = () => {
       await login({ email, password });
       navigate(from, { replace: true });
     } catch (err) {
-      setError(
-        extractErrorMessage(
-          err,
-          'No pudimos iniciar sesión. Verifica tus credenciales e inténtalo nuevamente.'
-        )
-      );
+      setError('No pudimos iniciar sesión. Verifica tus credenciales e inténtalo nuevamente.');
     } finally {
       setSubmitting(false);
     }
