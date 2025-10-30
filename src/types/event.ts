@@ -1,15 +1,14 @@
 export interface Event {
-  id: string;
+  id: number;
   title: string;
-  category: string;
-  summary: string;
   description: string;
-  tags: string[];
-  location: string;
-  date: string;
-  time: string;
-  price: string;
-  image: string;
+  imageUrl?: string | null;
   startDate: string;
-  countdown?: string;
+  endDate: string;
+  location: string;
+  type: string;
+  status: string;
+  capacity: number;
+  costEntry: number;
+  tags: string[];
 }

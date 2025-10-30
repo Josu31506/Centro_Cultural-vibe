@@ -1,9 +1,42 @@
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import EventCard from '../components/EventCard';
-import { getHighlightedEvents } from '../services/eventsService';
+import { getAllEvents } from '../services/eventsService';
+import type { Event } from '../types/event';
 
 const Home = () => {
-  const highlightedEvents = getHighlightedEvents();
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let ignore = false;
+
+    const fetchEvents = async () => {
+      try {
+        const response = await getAllEvents();
+        if (!ignore) {
+          setEvents(response);
+        }
+      } catch (err) {
+        if (!ignore) {
+          setError('No pudimos cargar los eventos. Inténtalo nuevamente en unos minutos.');
+        }
+      } finally {
+        if (!ignore) {
+          setLoading(false);
+        }
+      }
+    };
+
+    void fetchEvents();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  const highlightedEvents = useMemo(() => events.slice(0, 4), [events]);
 
   return (
     <div className="space-y-16">
@@ -56,11 +89,31 @@ const Home = () => {
             Ver todos
           </Link>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {highlightedEvents.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))}
-        </div>
+        {loading && (
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {[...Array(4)].map((_, index) => (
+              <div
+                key={`skeleton-${index}`}
+                className="h-72 animate-pulse rounded-3xl bg-cream/60 shadow-soft"
+              />
+            ))}
+          </div>
+        )}
+        {!loading && error && (
+          <div className="rounded-3xl bg-cream p-6 text-center text-sm text-cocoa shadow-soft">{error}</div>
+        )}
+        {!loading && !error && highlightedEvents.length === 0 && (
+          <div className="rounded-3xl bg-cream p-6 text-center text-sm text-cocoa shadow-soft">
+            Aún no hay eventos disponibles. Vuelve pronto para descubrir nuevas experiencias.
+          </div>
+        )}
+        {!loading && !error && highlightedEvents.length > 0 && (
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {highlightedEvents.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );
